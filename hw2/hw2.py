@@ -2,6 +2,7 @@ from sklearn import datasets
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.cross_validation import KFold
+from sklearn.linear_model import LinearRegression
 
 KNN=True 
 NB=False
@@ -13,6 +14,17 @@ def load_iris_data() :
     # extract the elements of the data that are used in this exercise
     return (iris.data, iris.target, iris.target_names)
 
+def lr(X_train, y_train):
+    # funtion returns an LR object
+    #  useful methods of this object for this exercise:                                                                                                                    
+    #   fit(X_train, y_train) --> fit the model using a training set                                                                                                       
+    #   predict(X_classify) --> to predict a result using the trained model                                                                                                
+    #   score(X_test, y_test) --> to score the model using a test set
+    
+    clf = LinearRegression()
+    clf.fit(X_train, y_train)
+
+    return clf
 
 def knn(X_train, y_train, k_neighbors = 3 ) :
     # function returns a kNN object
