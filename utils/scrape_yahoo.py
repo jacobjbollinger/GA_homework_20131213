@@ -1,14 +1,14 @@
 import urllib
 import os
 import json
-dir_out = 'yahoo_data'
+dir_out = '/home/jacob/yahoo_data_20130110'
 
 if not os.path.exists(dir_out):
     print 'Creating directory %s' % dir_out
     os.mkdir(dir_out)
 
-symbols = ['FB','GOOG','AAPL']
-symbols = ['FB']
+#symbols = ['FB','GOOG','AAPL']
+#symbols = ['FB']
 symbols  = json.loads(open("symbols.json").read())
 for symbol in symbols:
     data_out = {}

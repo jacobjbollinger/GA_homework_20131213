@@ -19,6 +19,6 @@ for (c_label, classifer) in classfiers_to_cv :
 
        print "fold <<%s>> :: acc <<%s>>" % (k_f, cv_a)
 
-
+    print dogfood
     print "\n %s Highest Accuracy: fold <<%s>> :: <<%s>>\n" % (c_label, best_k, best_cv_a)
 
