@@ -1,16 +1,19 @@
 import urllib
 import os
 import json
-dir_out = '/home/jacob/yahoo_data_20130110'
+import time
+import random
+dir_out = '/home/jacob/data/yahoo_data_20130110'
 
 if not os.path.exists(dir_out):
     print 'Creating directory %s' % dir_out
     os.mkdir(dir_out)
 
 #symbols = ['FB','GOOG','AAPL']
-#symbols = ['FB']
-symbols  = json.loads(open("symbols.json").read())
+symbols = ['FB']
+#symbols  = json.loads(open("symbols.json").read())
 for symbol in symbols:
+    time.sleep(.5+random.random())
     data_out = {}
     if 'more than 25' not in data_out:
         data_out['more than 25']=0
@@ -18,6 +21,7 @@ for symbol in symbols:
             data_out['less than 25']=0
     try:
         url = 'http://ichart.finance.yahoo.com/table.csv?s=%s&d=6&e=23&f=2013&g=d&a=8&b=7&c=1984&ignore=.csv' % symbol
+        print url
         data = urllib.urlopen(url).read()
         file = '%s/%s_data.csv' % (dir_out,symbol)
         f = open(file,'w')
