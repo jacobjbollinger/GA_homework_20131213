@@ -71,3 +71,12 @@ def cross_validate(XX, yy, classifier, k_fold) :
 
     # return the average accuracy
     return k_score_total/k_fold
+
+def roc(XX, yy, classifier, k):
+    k_fold_indices = KFold(len(XX), n_folds=k_fold, indices=True, shuffle=True, random_state=0)
+    for train_slice, test_slice in k_fold_indices :
+
+        model = classifier(XX[[ train_slice  ]], yy[[ train_slice  ]])
+
+        predictions = model.predict_proba(XX[[ test_slice ]], yy[[ test_slice ]])
+        print predictions
