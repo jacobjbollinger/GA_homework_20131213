@@ -1,11 +1,11 @@
 import json
 import os
 
-path = 'MOVIEDATA/movie_dict.json'
+path = '/home/jacob/data/RecSys/MOVIEDATA/movie_dict2.json'
 
 if not os.path.exists(path):
     out = {}
-    data=open('MOVIEDATA/ml-1m/movies.dat').read()
+    data=open('/home/jacob/data/RecSys/MOVIEDATA/ml-1m/movies.dat').read()
     data = data.split('\n')
     for d in data:
         d = d.split('::')
@@ -15,9 +15,9 @@ if not os.path.exists(path):
             if tmp not in out:
                 out[tmp]=d[1].encode('utf8')
         except:pass
-    print out[str(1)]
+    #print out[str(1)]
     out = json.dumps(out)
-    f = open('MOVIEDATA/movie_dict.json','w')
+    f = open(path,'w')
     f.write('%s' % str(out))
     f.close()
 else:
